@@ -21,7 +21,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         tableview.delegate=self
         tableview.dataSource=self
         searchBar.delegate=self
@@ -58,8 +58,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 }
 
 extension ViewController : UISearchBarDelegate {
-    
+    //  textDidChange() Tells the delegate that the user changed the search text.
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // $0 is a shortcut to mean "first argument" in a closure.
       searchingArray = arrayOfText.filter({$0.prefix(searchText.count)==searchText})
         searching = true
         tableview.reloadData()
